@@ -5,22 +5,43 @@
  */
 package edu.eci.arsw.blueprints.controllers;
 
+import edu.eci.arsw.blueprints.services.BlueprintsServices;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author hcadavid
  */
+@Service
 public class BlueprintAPIController {
+    @Autowired
+    private BlueprintsServices bps = null;
+    
+    @RestController
+    @RequestMapping(value = "/blueprints")
+    public class Controller {
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<?> manejadorGetRecurso(){
+        try {
+            return new ResponseEntity<>(bps,HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }        
+    }
     
     
-    
-    
-    
+    }
 }
 
