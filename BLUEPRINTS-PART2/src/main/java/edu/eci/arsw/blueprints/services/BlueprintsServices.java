@@ -71,5 +71,9 @@ public class BlueprintsServices {
             throw new BlueprintNotFoundException(BNE.getMessage());
         }
     }
+
+    public void update(Blueprint bp, String author, String bpname) throws BlueprintPersistenceException {
+        bpp.update(bp, author, bpname);
+    }
     
 }

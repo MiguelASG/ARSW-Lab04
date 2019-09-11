@@ -73,6 +73,11 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
     
     }
 
+    @Override
+    public void update(Blueprint bp, String author, String bpname) {
+        blueprints.put(new Tuple<>(author, bpname), bp);
+    }
+
     
 
     
